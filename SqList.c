@@ -146,9 +146,8 @@ SqList_t *bishiti1(SqList_t *List,int x){
 }
 
 int bishiti2(SqList_t *List,int p){
-    if(p>List->end)
+    if(NULL==List)
     {
-        printf("out of range");
         return 0;
     }
     int e=List->start[p];

@@ -1,29 +1,16 @@
-/******************************************************************************
- * 
- *  file name: SqList.c
- *  author   : w6661888@google.com
- *  date     : 2025/4/6
- *  function : SqList
- *  note     : null
- * 
- * 
- *  Copyright (C) 2025  w6661888@google.com  ALL rights reserved.
- * 
- *******************************************************************************/
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-typedef int Elemtype_t;//Custom data types
+/**
+  * @file name:SqList.c
+  * @brief    :Sequence table basic function realization
+  * @author   :i33akq@163.com
+  * @date     :2025/04/13
+  * @version  :1.0
+  * @note     :none
+  * @CopyRight (C)   2024-2025   i33akq@163.com   ALL Right Reseverd
+*/
 
-typedef struct SqList
-{
-    unsigned int size;
-    Elemtype_t *start;
-    int end;
-}SqList_t;
+#include "SqList.h"
 
-SqList_t *SqList_Creat(int size){
+SqList_t *SqList_Creat(unsigned int size){
     //控表
     SqList_t *List=(SqList_t *)calloc(1,sizeof(List));
     if(NULL==List)
@@ -138,49 +125,4 @@ SqList_t *rank(SqList_t *List){
         }
     }
     return List;
-}
-
-SqList_t *bishiti1(SqList_t *List,int x){
-    SqList_In(List,x);
-    rank(List);
-}
-
-int bishiti2(SqList_t *List,int p){
-    if(NULL==List)
-    {
-        return 0;
-    }
-    int e=List->start[p];
-    for(int i=p;i<List->end;i++)
-    {
-        List->start[i]=List->start[i+1];
-    }
-    List->end--;
-    return 1;
-}
-
-
-int main(int argc, char const *argv[])
-{
-    SqList_t *List=SqList_Creat(10);
-    SqList_In(List,0);
-    SqList_In(List,1);
-    SqList_In(List,2);
-    SqList_In(List,3);
-    SqList_In(List,5);
-    SqList_traversal(List);
-    printf("\n");
-
-    rank(List);
-    SqList_traversal(List);
-    bishiti1(List,4);
-    SqList_traversal(List);
-
-    //bishiti2(List,0);
-    //SqList_traversal(List);
-
-	//SqList_Del(List,5);
-    //printf("\n");
-	//SqList_Del(List,0);
-    //SqList_traversal(List);    
 }
